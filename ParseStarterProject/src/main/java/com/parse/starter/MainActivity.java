@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -51,18 +52,26 @@ public class MainActivity extends AppCompatActivity {
 //          }
 //      });
 
-      ParseUser.logInInBackground("test", "testpassword", new LogInCallback() {
-          @Override
-          public void done(ParseUser user, ParseException e) {
-              if (user != null) {
-                  Log.i("logIn", "Successful");
-              } else {
-                  Log.i("logIn", "Failed");
-                  e.printStackTrace();
-              }
-          }
-      });
+//      ParseUser.logInInBackground("test", "testpassword", new LogInCallback() {
+//          @Override
+//          public void done(ParseUser user, ParseException e) {
+//              if (user != null) {
+//                  Log.i("logIn", "Successful");
+//              } else {
+//                  Log.i("logIn", "Failed");
+//                  e.printStackTrace();
+//              }
+//          }
+//      });
 
+      //if logged in logic
+
+      ParseUser.logOut();
+      if(ParseUser.getCurrentUser() != null) {
+          Log.i("currentUser", "User logged in");
+      } else {
+          Log.i("currentUser", "Not logged in");
+      }
 
       ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
