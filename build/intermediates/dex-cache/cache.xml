@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-4c0b124846bcb8eaf70e64b032c8e191a31ca697.jar" />
+    </item>
+    <item
+        jar="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-a60023d61ca11119d209be44d6464ee2733b2cbd.jar" />
+    </item>
+    <item
+        jar="/Users/Guest/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.10.3/36366e460af2c0f224bb8f70b64e3302f638b138/parse-android-1.10.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="36366e460af2c0f224bb8f70b64e3302f638b138">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/parse-android-1.10.3-79c7f8b623379d74e26dfe8d93290acdb176236c.jar" />
+    </item>
+    <item
+        jar="/Users/Shared/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-d70717927f30de198723720178ac0246dd974cb3.jar" />
+    </item>
+    <item
+        jar="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-af53c9f632aedee9e891bff4c2c3e7166fe7f6ae.jar" />
+    </item>
+    <item
+        jar="/Users/Guest/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
+        <dex dex="/Users/Guest/Desktop/Instagram Clone/ParseStarterProject/build/intermediates/pre-dexed/debug/bolts-android-1.2.1-8c7534e881c34f480720d67e5f5f6b8d1a476875.jar" />
+    </item>
+
+</items>
