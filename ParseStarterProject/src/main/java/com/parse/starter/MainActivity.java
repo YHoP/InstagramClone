@@ -15,12 +15,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
               }
           }
       });
-*/
+
       ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
 
       query.getInBackground("vs9A6m6IKQ", new GetCallback<ParseObject>() {
           @Override
           public void done(ParseObject object, ParseException e) {
               if(e == null) {
-                  object.put("score", 200);
+                  object.put("username", "bum");
                   object.saveInBackground();
               } else {
                   Log.i("Get Object by ID", "DIDN'T WORK");
@@ -60,6 +63,52 @@ public class MainActivity extends AppCompatActivity {
               }
           }
       });
+
+
+
+      ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
+
+      query.whereEqualTo("username", "morgan");
+
+
+
+      query.findInBackground(new FindCallback<ParseObject>() {
+          @Override
+          public void done(List<ParseObject> objects, ParseException e) {
+              if (e == null) {
+                  Log.i("findInBackground", "Retrieved " + objects.size() + " results");
+
+                  for(ParseObject object : objects) {
+
+                      object.put("score", 5000);
+                      object.saveInBackground();
+
+                      Log.i("findInBackgroundUser", String.valueOf(object.get("score")));
+                  }
+              }
+          }
+      });
+
+        */
+      ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
+
+      query.whereEqualTo("username", "morgan");
+      query.setLimit(1);
+
+      query.findInBackground(new FindCallback<ParseObject>() {
+          @Override
+          public void done(List<ParseObject> objects, ParseException e) {
+              if (e == null) {
+
+                  if(objects.size() > 0) {
+                      objects.get(0).put("score", 999999999);
+                      objects.get(0).saveInBackground();
+
+                  }
+              }
+          }
+      });
+
 
       ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
