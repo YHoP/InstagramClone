@@ -17,11 +17,14 @@ import android.view.MenuItem;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
@@ -32,6 +35,37 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+//      ParseUser user = new ParseUser();
+//      user.setUsername("test");
+//      user.setPassword("testpassword");
+//      user.signUpInBackground(new SignUpCallback() {
+//          @Override
+//          public void done(ParseException e) {
+//              if (e == null) {
+//                  Log.i("signUp", "Successful");
+//              } else {
+//                  Log.i("signUp", "Failed");
+//                  e.printStackTrace();
+//              }
+//          }
+//      });
+
+      ParseUser.logInInBackground("test", "testpassword", new LogInCallback() {
+          @Override
+          public void done(ParseUser user, ParseException e) {
+              if (user != null) {
+                  Log.i("logIn", "Successful");
+              } else {
+                  Log.i("logIn", "Failed");
+                  e.printStackTrace();
+              }
+          }
+      });
+
+
+      ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
 /*
 
       ParseObject score = new ParseObject("Score");
@@ -89,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
           }
       });
 
-        */
+
       ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
 
       query.whereEqualTo("username", "morgan");
@@ -108,9 +142,8 @@ public class MainActivity extends AppCompatActivity {
               }
           }
       });
+*/
 
-
-      ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
   }
 
