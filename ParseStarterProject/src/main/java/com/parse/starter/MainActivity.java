@@ -9,6 +9,7 @@
 package com.parse.starter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +43,7 @@ import com.parse.SignUpCallback;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText txtUsername;
     EditText txtPassword;
@@ -53,15 +54,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Boolean signUpModeActive;
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-        if(keyCode == EditorInfo.IME_ACTION_SEND && event.getAction() == KeyEvent.ACTION_DOWN) {
-            signUpOrLogin(v);
+    TextView.OnEditorActionListener actionListener = new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            if (actionId == EditorInfo.IME_NULL
+                    && event.getAction() == KeyEvent.ACTION_DOWN) {
+                signUpOrLogin(v);
+            }
             return true;
         }
-        return false;
-    }
+    };
+
 
     @Override
     public void onClick(View v) {
@@ -94,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void done(ParseException e) {
                     if (e == null) {
                         Log.i("AppInfo", "Signup Successful");
+                        showUserList();
                     } else {
                         Toast.makeText(getApplicationContext(), e.getMessage().substring(e.getMessage().indexOf(" ")), Toast.LENGTH_LONG).show();
                         Log.i("AppInfo", "Signup Failed");
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void done(ParseUser user, ParseException e) {
                     if (user != null){
                         Log.i ("AppInfo", "Log in successful");
+                        showUserList();
                     } else {
                         Toast.makeText(getApplicationContext(), e.getMessage().substring(e.getMessage().indexOf(" ")), Toast.LENGTH_LONG).show();
                     }
@@ -117,10 +122,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void showUserList(){
+        Intent intent = new Intent(getApplicationContext(), UserList.class);
+        startActivity(intent);
+    }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+      if(ParseUser.getCurrentUser() != null){
+          showUserList();
+      }
+
 
       signUpModeActive = true;
 
@@ -136,8 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       mRelativeLayout.setOnClickListener(this);
 
 
-      txtUsername.setOnKeyListener(this);
-      txtPassword.setOnClickListener(this);
+      txtPassword.setOnEditorActionListener(actionListener);
 
   }
 
